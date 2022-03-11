@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PokeProject">
         <activity
+            android:name=".view.DashActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
