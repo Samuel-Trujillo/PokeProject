@@ -63,5 +63,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputID" />
 
+    <TextView
+        android:id="@+id/displayUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/displayFavoritePokemon"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/displayFavoritePokemon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentHolder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayUserName"
+        app:layout_constraintVertical_bias="0.165" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

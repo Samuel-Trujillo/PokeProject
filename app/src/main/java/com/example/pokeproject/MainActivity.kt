@@ -16,27 +16,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        //Navigating to DashActivity
         //Setting OnClickListener when signIn button is clicked
-        signIn.setOnClickListener{
-            //using an Intent to trigger onCreate method for HomeActivity
-            val dashIntent = Intent(this, DashActivity::class.java)
-            editUserInfo()
-            startActivity(dashIntent)
-
+        signIn.setOnClickListener {
+            startDashActivity()
         }
     }
-    fun editUserInfo(){
-        //taking text from EditText fields saving them to strings
-        val userNameText = userName.text.toString()
-        val favPokeText = favoritePokeInput.text.toString()
-        val preferences : SharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-        val editor = preferences.edit()
-        //using editor to apply/save the Strings input
-        editor.apply{
-            putString("uuName", userNameText)
-            putString("uuPoke", favPokeText)
-        }.commit()
-    }
+        //Navigating to DashActivity
+        fun startDashActivity(){
+            //taking text from EditText fields saving them to strings
+            val userNameText :String = userName.text.toString()
+            val favPokeText : String = favoritePokeInput.text.toString()
+            val preferences : SharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+            val editor = preferences.edit()
+            //using editor to apply/save the Strings input
+            editor.apply{
+                putString("uuName", userNameText)
+                putString("uuPoke", favPokeText)
+            }.apply()
+            //using an Intent to trigger onCreate method for HomeActivity
+            val dashIntent = Intent(this, DashActivity::class.java).also {
+                it.putExtra("uuName", userNameText).putExtra("uuPoke", favPokeText)
+                startActivity(it)
+            }
+        }
 }

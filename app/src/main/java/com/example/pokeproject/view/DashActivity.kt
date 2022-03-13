@@ -18,6 +18,18 @@ class DashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash)
 
+        //getting/assigning data transferred through dashIntent
+        val uuNameDisplay = intent.getStringExtra("uuName")
+        val uuPokeDisplay = intent.getStringExtra("uuPoke")
+
+        //setting TextView Text to the data pulled saved to the variables above
+        val tvNameDisplay = displayUserName.apply {
+            text = uuNameDisplay
+        }
+        val tvPokeDisplay = displayFavoritePokemon.apply {
+            text = uuPokeDisplay
+        }
+
         //replacing my fragment holder with actual data
         fun showPokemonFragment(){
             //will need to Modularize this to follow MVP
