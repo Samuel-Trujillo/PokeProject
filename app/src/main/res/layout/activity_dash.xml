@@ -12,7 +12,7 @@
         android:id="@+id/inputID"
         android:layout_width="159dp"
         android:layout_height="34dp"
-        android:text="Search By ID"
+        android:hint="Search By ID"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/searchOne"
         app:layout_constraintEnd_toStartOf="@+id/searchOne"

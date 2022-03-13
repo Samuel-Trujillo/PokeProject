@@ -48,7 +48,6 @@ class DashActivity : AppCompatActivity() {
 
         //setting on click listener
         val showPokemon = findViewById<Button>(R.id.searchOne)
-        showPokemonFragment()
         showPokemon.setOnClickListener{
             showPokemonFragment()
 
