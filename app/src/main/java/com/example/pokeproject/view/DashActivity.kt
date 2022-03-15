@@ -1,11 +1,16 @@
 package com.example.pokeproject.view
 
+import android.app.DownloadManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.fragment.app.FragmentTransaction
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.api.Query
 import com.example.pokeproject.R
+import com.example.pokeproject.data.BASE_URL
 import kotlinx.android.synthetic.main.activity_dash.*
+import com.example.pokeproject.data.GraphQLApollo
 
 class DashActivity : AppCompatActivity() {
 
@@ -18,6 +23,7 @@ class DashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash)
 
+
         //getting/assigning data transferred through dashIntent
         val uuNameDisplay = intent.getStringExtra("uuName")
         val uuPokeDisplay = intent.getStringExtra("uuPoke")
@@ -29,6 +35,12 @@ class DashActivity : AppCompatActivity() {
         val tvPokeDisplay = displayFavoritePokemon.apply {
             text = uuPokeDisplay
         }
+
+
+
+
+        //setting query value
+        val searchByIdQuery = inputID.text
 
         //replacing my fragment holder with actual data
         fun showPokemonFragment(){
