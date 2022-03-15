@@ -4,13 +4,16 @@ import android.app.DownloadManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Query
+import com.example.pokeproject.PokemonQuery
 import com.example.pokeproject.R
-import com.example.pokeproject.data.BASE_URL
 import kotlinx.android.synthetic.main.activity_dash.*
-import com.example.pokeproject.data.GraphQLApollo
+import com.example.pokeproject.data.apolloClient
+import kotlinx.android.synthetic.main.fragment_pokemon.*
 
 class DashActivity : AppCompatActivity() {
 
@@ -39,17 +42,32 @@ class DashActivity : AppCompatActivity() {
 
 
 
-        //setting query value
-        val searchByIdQuery = inputID.text
+
 
         //replacing my fragment holder with actual data
         fun showPokemonFragment(){
-            //will need to Modularize this to follow MVP
             val transaction = manager.beginTransaction()
             //setting fragment to replace placeholder
             val fragment = PokemonFragment()
             //the actual replacing
             transaction.replace(R.id.fragmentHolder, fragment)
+
+
+
+            //FIX THIS
+            //setting query value
+            var searchByIdQuery = inputID.text.toString()
+            //casting inputID String to Integer
+            var pokeIdValue = Integer.parseInt(searchByIdQuery)
+            //passing through pokeIdValue into query
+            lifecycleScope.launchWhenCreated {
+                var idResponse = apolloClient.query(PokemonQuery(pokeIdValue)).execute()
+                onePokeTextView.apply {
+                    text = idResponse.data.toString()
+                }
+            }
+
+
             //adding back button functionality to not close app
             transaction.addToBackStack(null)
             //saving/applying changes
