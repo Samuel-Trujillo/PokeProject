@@ -17,8 +17,6 @@ import kotlinx.android.synthetic.main.fragment_pokemon.*
 
 class DashActivity : AppCompatActivity() {
 
-    //setting fragment loaded as default to true in case I make another frag
-    var isFragmentLoaded = true
     //creating my fragment manager
     val manager = supportFragmentManager
 
@@ -39,11 +37,6 @@ class DashActivity : AppCompatActivity() {
             text = uuPokeDisplay
         }
 
-
-
-
-
-
         //replacing my fragment holder with actual data
         fun showPokemonFragment(){
             val transaction = manager.beginTransaction()
@@ -52,9 +45,6 @@ class DashActivity : AppCompatActivity() {
             //the actual replacing
             transaction.replace(R.id.fragmentHolder, fragment)
 
-
-
-            //FIX THIS
             //setting query value
             var searchByIdQuery = inputID.text.toString()
             //casting inputID String to Integer
@@ -63,17 +53,14 @@ class DashActivity : AppCompatActivity() {
             lifecycleScope.launchWhenCreated {
                 var idResponse = apolloClient.query(PokemonQuery(pokeIdValue)).execute()
                 onePokeTextView.apply {
-                    text = idResponse.data.toString()
+                    text = idResponse.data?.pokemon?.name.toString()
                 }
             }
-
 
             //adding back button functionality to not close app
             transaction.addToBackStack(null)
             //saving/applying changes
             transaction.commit()
-            //used only if i need to make another frag
-            isFragmentLoaded = true
         }
 
         //setting on click listener
