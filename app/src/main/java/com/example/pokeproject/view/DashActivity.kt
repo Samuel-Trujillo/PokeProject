@@ -52,9 +52,11 @@ class DashActivity : AppCompatActivity() {
             //passing through pokeIdValue into query
             lifecycleScope.launchWhenCreated {
                 var idResponse = apolloClient.query(PokemonQuery(pokeIdValue)).execute()
-                onePokeTextView.apply {
-                    text = idResponse.data?.pokemon?.name.toString()
-                }
+                onePokeTextView.text = idResponse.data?.pokemon?.name.toString()
+                onePokeTextViewGenus.text = idResponse.data?.pokemon?.genus.toString()
+                onePokeTextViewHeight.text = idResponse.data?.pokemon?.height.toString()
+                onePokeTextViewWeight.text = idResponse.data?.pokemon?.weight.toString()
+
             }
 
             //adding back button functionality to not close app
