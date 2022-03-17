@@ -1,5 +1,8 @@
 query Pokemon($pokemonId: Int!) {
     pokemon(id: $pokemonId) {
         name
+        genus
+        height
+        weight
     }
 }
