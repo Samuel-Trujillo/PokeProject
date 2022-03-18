@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
 import com.apollographql.apollo3.ApolloClient
@@ -39,6 +40,7 @@ class DashActivity : AppCompatActivity() {
 
         //replacing my fragment holder with actual data
         fun showPokemonFragment(){
+
             val transaction = manager.beginTransaction()
             //setting fragment to replace placeholder
             val fragment = PokemonFragment()
@@ -56,22 +58,16 @@ class DashActivity : AppCompatActivity() {
                 onePokeTextViewGenus.text = idResponse.data?.pokemon?.genus.toString()
                 onePokeTextViewHeight.text = idResponse.data?.pokemon?.height.toString()
                 onePokeTextViewWeight.text = idResponse.data?.pokemon?.weight.toString()
-
             }
-
             //adding back button functionality to not close app
             transaction.addToBackStack(null)
             //saving/applying changes
             transaction.commit()
         }
-
         //setting on click listener
         val showPokemon = findViewById<Button>(R.id.searchOne)
         showPokemon.setOnClickListener{
             showPokemonFragment()
-
         }
-
-
     }
 }

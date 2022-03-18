@@ -6,31 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".view.DashActivity">
 
+
     <EditText
         android:id="@+id/inputID"
         android:layout_width="159dp"
         android:layout_height="34dp"
         android:hint="Search By ID"
-        android:textSize="10dp"
         android:textAlignment="center"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/searchOne"
-        app:layout_constraintEnd_toStartOf="@+id/searchOne"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.994" />
 
     <Button
         android:id="@+id/searchOne"
         android:layout_width="96dp"
         android:layout_height="35dp"
         android:layout_marginTop="172dp"
+        android:layout_marginEnd="112dp"
         android:text="Search"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/inputID"
         app:layout_constraintTop_toTopOf="@+id/homeTitle" />
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="96dp"
+        android:layout_height="35dp"
+        android:text="Refresh"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentHolder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.866" />
 
     <TextView
         android:id="@+id/homeTitle"
