@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_dash.*
 import kotlinx.android.synthetic.main.fragment_pokemon.*
 
 class ShowPokemonFragment {
-
     fun showPokemonFragment(dashActivity: DashActivity){
 
         //setting my fragment manager
@@ -31,6 +30,7 @@ class ShowPokemonFragment {
             if (pokeIdValue >= 894){
                 dashActivity.inputID.setError("There are only 893 Pokemon!")
             }else{
+                //retrieving query data and setting it to the TextViews
                 var idResponse = apolloClient.query(PokemonQuery(pokeIdValue)).execute()
                 //setting query data to TextViews
                 dashActivity.onePokeTextView.text = idResponse.data?.pokemon?.name.toString()
