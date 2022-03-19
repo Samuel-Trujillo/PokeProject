@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_pokemon.*
 class ShowPokemonFragment {
 
     fun showPokemonFragment(dashActivity: DashActivity){
+
         //setting my fragment manager
         val manager = dashActivity.supportFragmentManager
         val transaction = manager.beginTransaction()

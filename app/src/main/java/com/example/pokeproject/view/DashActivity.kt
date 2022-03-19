@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.pokeproject.R
+import com.example.pokeproject.presenter.GetSharedPreferences
 import kotlinx.android.synthetic.main.activity_dash.*
 
 import com.example.pokeproject.presenter.ShowPokemonFragment
@@ -12,17 +13,10 @@ class DashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash)
 
-        //getting/assigning data transferred through dashIntent
-        val uuNameDisplay = intent.getStringExtra("uuName")
-        val uuPokeDisplay = intent.getStringExtra("uuPoke")
-
-        //setting TextView Text to the data pulled saved to the variables above
-        val tvNameDisplay = displayUserName.apply {
-            text = uuNameDisplay
-        }
-        val tvPokeDisplay = displayFavoritePokemon.apply {
-            text = uuPokeDisplay
-        }
+        //instantiating GetSharedPreferences to "get/set Shared preferences"
+        val initGetSharedPreferences = GetSharedPreferences()
+        //getting/setting shared preferences
+        initGetSharedPreferences.getSharedPreferences(this)
 
         //instantiating ShowPokemonFragment
         val initPokemonFragment = ShowPokemonFragment()
@@ -31,6 +25,7 @@ class DashActivity : AppCompatActivity() {
         val showPokemon = findViewById<Button>(R.id.searchOne)
         showPokemon.setOnClickListener{
             initPokemonFragment.showPokemonFragment(this)
+
         }
     }
 }

@@ -10,9 +10,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         //instantiating StartDashActivity
         val initDashActivity = StartDashActivity()
-        //Setting OnClickListener when signIn button is clicked
+
+        //Setting OnClickListener when signIn button is clicked to start next activity
         signIn.setOnClickListener {
             initDashActivity.startDashActivity(this)
         }
