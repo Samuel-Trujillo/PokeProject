@@ -20,6 +20,7 @@ class PokemonFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        //inflating pokemon fragment when called to replace fragment holder
         return inflater!!.inflate(R.layout.fragment_pokemon,container,false)
     }
 

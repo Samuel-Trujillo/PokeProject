@@ -19,12 +19,11 @@ import kotlinx.android.synthetic.main.fragment_pokemon.*
 class DashActivity : AppCompatActivity() {
 
     //creating my fragment manager
-    val manager = supportFragmentManager
+    private val manager = supportFragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash)
-
 
         //getting/assigning data transferred through dashIntent
         val uuNameDisplay = intent.getStringExtra("uuName")
@@ -54,6 +53,7 @@ class DashActivity : AppCompatActivity() {
             //passing through pokeIdValue into query
             lifecycleScope.launchWhenCreated {
                 var idResponse = apolloClient.query(PokemonQuery(pokeIdValue)).execute()
+                //setting query data to TextViews
                 onePokeTextView.text = idResponse.data?.pokemon?.name.toString()
                 onePokeTextViewGenus.text = idResponse.data?.pokemon?.genus.toString()
                 onePokeTextViewHeight.text = idResponse.data?.pokemon?.height.toString()
