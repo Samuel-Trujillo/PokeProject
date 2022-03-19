@@ -11,6 +11,7 @@
         android:layout_width="164dp"
         android:layout_height="37dp"
         android:hint="Enter Pokemon ID"
+        android:inputType="number"
         android:textAlignment="center"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/searchOne"
