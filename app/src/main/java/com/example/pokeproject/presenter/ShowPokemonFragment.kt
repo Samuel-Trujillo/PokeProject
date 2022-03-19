@@ -1,8 +1,5 @@
 package com.example.pokeproject.presenter
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.pokeproject.PokemonQuery
 import com.example.pokeproject.R
