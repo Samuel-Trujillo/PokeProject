@@ -1,4 +1,7 @@
 # PokeProject
+
+README.rtf file in the root folder of the project contains the full documentation, including screenshots and correct formatting for this project
+
 For this Android application "PokeProject", I used the MVP (Model, View, presenter) architecture pattern
 
 The purpose of the App is to allow users to search for an individual Pokemon via their Pokemon ID and display the following information-
