@@ -4,6 +4,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.pokeproject.PokemonQuery
 import com.example.pokeproject.R
 import com.example.pokeproject.data.apolloClient
+import com.example.pokeproject.model.OnePokemon
 import com.example.pokeproject.view.DashActivity
 import com.example.pokeproject.view.PokemonFragment
 import kotlinx.android.synthetic.main.activity_dash.*
@@ -30,13 +31,21 @@ class ShowPokemonFragment {
             if (pokeIdValue >= 894){
                 dashActivity.inputID.setError("There are only 893 Pokemon!")
             }else{
+
                 //retrieving query data and setting it to the TextViews
                 var idResponse = apolloClient.query(PokemonQuery(pokeIdValue)).execute()
-                //setting query data to TextViews
-                dashActivity.onePokeTextView.text = idResponse.data?.pokemon?.name.toString()
-                dashActivity.onePokeTextViewGenus.text = idResponse.data?.pokemon?.genus.toString()
-                dashActivity.onePokeTextViewHeight.text = idResponse.data?.pokemon?.height.toString()
-                dashActivity.onePokeTextViewWeight.text = idResponse.data?.pokemon?.weight.toString()
+                //instantiating OnePokemon to take in query data
+                val pokemonResult = OnePokemon(
+                    idResponse.data?.pokemon?.name.toString(),
+                    idResponse.data?.pokemon?.genus.toString(),
+                    idResponse.data?.pokemon?.height.toString(),
+                    idResponse.data?.pokemon?.weight.toString()
+                )
+                //setting pokemon data to TextViews
+                dashActivity.onePokeTextView.text = pokemonResult.pokeName
+                dashActivity.onePokeTextViewGenus.text = pokemonResult.pokeGenus
+                dashActivity.onePokeTextViewHeight.text = pokemonResult.pokeHeight
+                dashActivity.onePokeTextViewWeight.text = pokemonResult.pokeWeight
             }
         }
         //adding back button functionality to not close app
