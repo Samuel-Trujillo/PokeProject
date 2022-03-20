@@ -30,8 +30,8 @@ class ShowPokemonFragment {
             //setting ID search max as there are currently only 893 pokemon
             if (pokeIdValue >= 894){
                 dashActivity.inputID.setError("There are only 893 Pokemon!")
-            }else{
-
+            }
+            else{
                 //retrieving query data and setting it to the TextViews
                 var idResponse = apolloClient.query(PokemonQuery(pokeIdValue)).execute()
                 //instantiating OnePokemon to take in query data
